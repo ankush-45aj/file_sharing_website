@@ -18,7 +18,13 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-// Base Routes
+// Static folder
+app.use('/uploads', express.static('uploads'));
+
+// Routes
+app.use('/api/files', fileRoutes);
+
+// Base routes
 app.get('/', (req, res) => {
     res.send('🚀 File Sharing Backend Running');
 });
@@ -26,9 +32,6 @@ app.get('/', (req, res) => {
 app.get('/api', (req, res) => {
     res.send('📂 API is working');
 });
-
-// Routes
-app.use('/api/files', fileRoutes);
 
 const PORT = process.env.PORT || 5000;
 
