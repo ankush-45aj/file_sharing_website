@@ -18,6 +18,15 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+// Base Routes
+app.get('/', (req, res) => {
+    res.send('🚀 File Sharing Backend Running');
+});
+
+app.get('/api', (req, res) => {
+    res.send('📂 API is working');
+});
+
 // Routes
 app.use('/api/files', fileRoutes);
 
